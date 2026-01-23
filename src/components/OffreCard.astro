@@ -1,5 +1,6 @@
 ---
 const { offre } = Astro.props;
+console.log(offre);
 ---
 
 <div class="bg-white py-16">
@@ -45,3 +46,16 @@ const { offre } = Astro.props;
         </div>
     </div>
 </div>
+
+<script>
+    //@ts-nocheck
+    const cards = document.querySelectorAll(".offre-card");
+    cards.forEach((card) => {
+        card.addEventListener("click", () => {
+            const isFavori = card.dataset.favori === "true";
+            card.dataset.favori = isFavori ? "false" : "true";
+            card.classList.toggle("bg-amber-50");
+            card.classList.toggle("bg-white");
+        });
+    });
+</script>
