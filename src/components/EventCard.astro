@@ -1,0 +1,42 @@
+---
+const { event } = Astro.props;
+console.log(event);
+---
+
+<div
+    class="event-card bg-white border-2 border-amber-300 rounded-xl p-6
+           shadow-sm hover:shadow-md hover:-translate-y-1
+           transition-all cursor-pointer"
+    data-favori={event.favori}
+>
+    <div class="flex items-center gap-2 mb-2">
+        <strong class="text-lg text-red-700">
+            {event.title}
+        </strong>
+    </div>
+
+    <p class="text-amber-700 text-sm mb-4">
+        {event.date}
+    </p>
+
+    <button
+        class="bg-amber-400 hover:bg-amber-500
+               text-red-900 px-4 py-2 rounded-md
+               text-sm transition-colors"
+    >
+        Favori
+    </button>
+</div>
+
+<script>
+    //@ts-nocheck
+    const cards = document.querySelectorAll(".event-card");
+    cards.forEach((card) => {
+        card.addEventListener("click", () => {
+            const isFavori = card.dataset.favori === "true";
+            card.dataset.favori = isFavori ? "false" : "true";
+            card.classList.toggle("bg-amber-50");
+            card.classList.toggle("bg-white");
+        });
+    });
+</script>
