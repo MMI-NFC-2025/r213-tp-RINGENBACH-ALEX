@@ -13,7 +13,7 @@ console.log(offre);
             data-favori={offre.favori.toString()}
         >
             <PbImage
-                class="w-full h-40 object-cover rounded-md mb-4"
+                class="object-cover rounded-md mb-4"
                 record={offre}
                 recordImage={offre.images[0]}
             />
@@ -22,39 +22,7 @@ console.log(offre);
                 <strong class="text-lg text-red-700">
                     {offre.nomMaison}
                 </strong>
-                <span class="text-red-800 font-bold">
-                    {offre.prix} €
-                </span>
             </div>
-
-            <p class="text-amber-700 text-sm mb-2">
-                {offre.adresse}
-            </p>
-
-            <p class="text-sm text-gray-700 mb-4">
-                {offre.nbChambres} chambres {offre.nbSdb} SDB {offre.surface} m²
-            </p>
-
-            <button
-                class="favori-btn bg-amber-400 hover:bg-amber-500
-                       text-red-900 px-4 py-2 rounded-md
-                       text-sm transition-colors w-full"
-            >
-                Favori
-            </button>
         </div>
     </div>
 </div>
-
-<script>
-    //@ts-nocheck
-    const cards = document.querySelectorAll(".offre-card");
-    cards.forEach((card) => {
-        card.addEventListener("click", () => {
-            const isFavori = card.dataset.favori === "true";
-            card.dataset.favori = isFavori ? "false" : "true";
-            card.classList.toggle("bg-amber-50");
-            card.classList.toggle("bg-white");
-        });
-    });
-</script>
