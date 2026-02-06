@@ -1,0 +1,139 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import OffreCard from "../../components/OffreCard.astro";
+import { getOffres } from "../../js/backend.mjs";
+const offres = await getOffres();
+---
+
+<Layout titre="Accueil">
+	<!-- HERO DÉCORÉ -->
+	<section
+		class="relative overflow-hidden bg-linear-to-br from-amber-100 via-white to-red-100"
+	>
+		<!-- blobs décoratifs -->
+		<div
+			class="absolute -top-24 -left-24 w-96 h-96 bg-amber-300/30 rounded-full blur-3xl"
+		>
+		</div>
+		<div
+			class="absolute top-32 -right-24 w-96 h-96 bg-red-300/20 rounded-full blur-3xl"
+		>
+		</div>
+
+		<div class="relative max-w-7xl mx-auto px-6 py-24">
+			<span
+				class="inline-block mb-4 px-4 py-1 rounded-full bg-amber-200 text-red-800 text-sm font-semibold"
+			>
+				Plateforme immobilière premium
+			</span>
+
+			<h1
+				class="text-4xl md:text-6xl font-extrabold text-red-900 leading-tight mb-6"
+			>
+				Trouvez la maison <br />
+				de vos rêves
+			</h1>
+
+			<p class="text-lg text-gray-700 max-w-2xl">
+				Des biens exclusifs sélectionnés avec soin partout en France.
+				Comparez, ajoutez en favoris et trouvez votre futur chez-vous.
+			</p>
+		</div>
+	</section>
+
+	<!-- BARRE D'ACTIONS -->
+	<section class="bg-white sticky top-0 z-10 shadow-sm">
+		<div
+			class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+		>
+			<h2 class="text-2xl font-semibold text-gray-800">
+				Nos biens disponibles
+			</h2>
+
+			<button
+				id="favori-button"
+				class="bg-amber-400 hover:bg-amber-500
+               text-red-900 font-semibold
+               px-6 py-3 rounded-xl
+               shadow-md hover:shadow-lg
+               transition-all duration-200
+               hover:-translate-y-0.5 active:translate-y-0"
+			>
+				Afficher les favoris
+			</button>
+		</div>
+	</section>
+
+	<!-- STATS -->
+	<section class="bg-white py-10 border-b">
+		<div
+			class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+		>
+			<div>
+				<p class="text-3xl font-bold text-red-800">{offres.length}+</p>
+				<p class="text-gray-600">Biens disponibles</p>
+			</div>
+			<div>
+				<p class="text-3xl font-bold text-red-800">1200+</p>
+				<p class="text-gray-600">Clients satisfaits</p>
+			</div>
+			<div>
+				<p class="text-3xl font-bold text-red-800">15</p>
+				<p class="text-gray-600">Agences</p>
+			</div>
+			<div>
+				<p class="text-3xl font-bold text-red-800">4.9★</p>
+				<p class="text-gray-600">Note moyenne</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- LISTE DES OFFRES -->
+	<section class="py-20 relative">
+		<div
+			class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.12),transparent_60%)]"
+		>
+		</div>
+
+		<div class="relative max-w-7xl mx-auto px-6">
+			<div
+				class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10"
+			>
+				{
+					offres.map((offre) => (
+						<div
+							class="offre"
+							data-favori={offre.favori.toString()}
+						>
+							<OffreCard offre={offre} />
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<!-- SCRIPT STRICTEMENT INCHANGÉ -->
+<script>
+	const button = document.getElementById("favori-button");
+	let showOnlyFavorites = false;
+
+	button?.addEventListener("click", () => {
+		showOnlyFavorites = !showOnlyFavorites;
+		const offres: NodeListOf<HTMLElement> =
+			document.querySelectorAll(".offre");
+
+		offres.forEach((offre) => {
+			const isFavori = offre.dataset.favori === "true";
+
+			if (showOnlyFavorites) {
+				offre.style.display = isFavori ? "block" : "none";
+				button.textContent = "Afficher tout";
+			} else {
+				offre.style.display = "block";
+				button.textContent = "Afficher les favoris";
+			}
+		});
+	});
+</script>
