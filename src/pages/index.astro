@@ -4,7 +4,134 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout titre="Accueil">
-	<h1>Accueil</h1>
+	<!-- HERO -->
+	<section
+		class="relative overflow-hidden bg-gradient-to-br from-amber-100 via-white to-red-100"
+	>
+		<!-- décorations -->
+		<div
+			class="absolute -top-32 -left-32 w-[500px] h-[500px] bg-amber-300/30 rounded-full blur-3xl"
+		>
+		</div>
+		<div
+			class="absolute top-20 -right-32 w-[400px] h-[400px] bg-red-300/20 rounded-full blur-3xl"
+		>
+		</div>
+
+		<div class="relative max-w-7xl mx-auto px-6 py-28">
+			<span
+				class="inline-block mb-4 px-4 py-1 rounded-full bg-amber-200 text-red-800 text-sm font-semibold"
+			>
+				Plateforme immobiliere moderne
+			</span>
+
+			<h1
+				class="text-4xl md:text-6xl font-extrabold text-red-900 mb-6 leading-tight"
+			>
+				Trouvez votre future<br />
+				maison simplement
+			</h1>
+
+			<p class="text-lg text-gray-700 max-w-2xl mb-8">
+				Explorez des biens immobiliers soigneusement selectionnes.
+				Comparez les offres, ajoutez vos favoris et trouvez votre
+				nouveau chez-vous.
+			</p>
+
+			<div class="flex flex-wrap gap-4">
+				<a
+					href="/offres"
+					class="bg-amber-400 hover:bg-amber-500 text-red-900 font-semibold
+                 px-6 py-3 rounded-xl shadow-lg hover:shadow-xl
+                 transition-all duration-200 hover:-translate-y-0.5"
+				>
+					Voir les offres
+				</a>
+
+				<a
+					href="/"
+					class="border border-red-300 text-red-700 font-semibold
+                 px-6 py-3 rounded-xl hover:bg-red-50
+                 transition-all duration-200"
+				>
+					En savoir plus
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- STATS -->
+	<section class="bg-white py-16 border-t border-b">
+		<div
+			class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+		>
+			<div>
+				<p class="text-3xl font-bold text-red-800">500+</p>
+				<p class="text-gray-600">Maisons</p>
+			</div>
+
+			<div>
+				<p class="text-3xl font-bold text-red-800">1200+</p>
+				<p class="text-gray-600">Clients satisfaits</p>
+			</div>
+
+			<div>
+				<p class="text-3xl font-bold text-red-800">25</p>
+				<p class="text-gray-600">Villes</p>
+			</div>
+
+			<div>
+				<p class="text-3xl font-bold text-red-800">4.9</p>
+				<p class="text-gray-600">Note moyenne</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECTION INFO -->
+	<section class="bg-gray-50 py-20">
+		<div class="max-w-7xl mx-auto px-6 text-center">
+			<h2 class="text-3xl font-bold text-gray-800 mb-6">
+				Pourquoi choisir notre plateforme
+			</h2>
+
+			<p class="text-gray-600 max-w-2xl mx-auto mb-12">
+				Nous proposons une experience moderne pour faciliter votre
+				recherche immobiliere.
+			</p>
+
+			<div class="grid md:grid-cols-3 gap-8">
+				<div
+					class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition"
+				>
+					<div class="text-amber-500 text-3xl mb-3">🏠</div>
+					<h3 class="font-semibold text-lg mb-2">Large choix</h3>
+					<p class="text-gray-600 text-sm">
+						De nombreuses maisons disponibles partout.
+					</p>
+				</div>
+
+				<div
+					class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition"
+				>
+					<div class="text-amber-500 text-3xl mb-3">⭐</div>
+					<h3 class="font-semibold text-lg mb-2">Qualite verifiee</h3>
+					<p class="text-gray-600 text-sm">
+						Des biens selectionnes avec attention.
+					</p>
+				</div>
+
+				<div
+					class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition"
+				>
+					<div class="text-amber-500 text-3xl mb-3">⚡</div>
+					<h3 class="font-semibold text-lg mb-2">Simple et rapide</h3>
+					<p class="text-gray-600 text-sm">
+						Trouvez votre maison en quelques clics.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
 </Layout>
 
 <script>

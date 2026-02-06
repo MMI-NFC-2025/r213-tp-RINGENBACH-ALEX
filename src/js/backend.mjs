@@ -28,3 +28,17 @@ export async function getOffre(id) {
         return null;
     }
 }
+
+// liste des maisons ayant une surface supérieure à 80 m².
+export async function getOffresPlusDe(surface) {
+    try {
+        const data = await db.collection('maison').getFullList({
+            filter: `surface > ${surface}`,
+            sort: '-created',
+        });
+        return data;
+    } catch (error) {
+        console.log('Une erreur est survenue en lisant la liste des maisons', error);
+        return [];
+    }
+}
